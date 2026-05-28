@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '../store/useStore';
 import { churches, typeConfig } from '../data/churchesData';
 
-const ADMIN_PASSWORD = 'admin2024';
+const ADMIN_PASSWORD = 'T01288452212';
 
 export default function AdminPage() {
   const { isDarkMode, isAdmin, setIsAdmin } = useStore();
@@ -92,7 +92,7 @@ export default function AdminPage() {
               دخول
             </button>
             <p className="text-center text-xs text-gray-400">
-              💡 للتجربة: كلمة المرور هي <span className="font-bold text-purple-500">admin2024</span>
+             ادمن فقط   <span className="font-bold text-purple-500">01288452212</span>
             </p>
           </div>
         </motion.div>
