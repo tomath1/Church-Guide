@@ -1,18 +1,17 @@
-
-
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '../store/useStore';
 import { churches, typeConfig } from '../data/churchesData';
-
 import { useEffect } from 'react';
 const ADMIN_PASSWORD = 'TOMAS2005@';
 
 export default function AdminPage() { 
   const { isDarkMode, isAdmin, setIsAdmin } = useStore();
+
   useEffect(() => {
-  localStorage.removeItem('isAdmin');
   setIsAdmin(false);
+  localStorage.clear();
+  sessionStorage.clear();
 }, []);
 
   return (
@@ -110,25 +109,36 @@ export default function AdminPage() {
   }
 
   return (
-    <div className={`min-h-screen pb-24 pt-16 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'}`}>
-      {/* Admin Header */}
-      <div className="px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className={`text-2xl font-black ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
-              ⚙️ لوحة التحكم
-            </h1>
-            <p className="text-gray-500 text-sm">Egypt Christian Guide Admin</p>
-          </div>
-          <button
-            onClick={() => setIsAdmin(false)}
-            className="px-3 py-2 rounded-xl text-red-500 bg-red-50 text-sm font-bold"
-          >
-            خروج
-          </button>
-        </div>
+<div className={`min-h-screen pb-24 pt-16 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'}`}>
+  
+  {/* Admin Header */}
+  <div className="px-4 py-4">
+    
+    <div className="flex items-center justify-between">
+
+      {/* Title */}
+      <div>
+        <h1 className={`text-2xl font-black ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+          ⚙️ لوحة التحكم
+        </h1>
+        <p className="text-gray-500 text-sm">Egypt Christian Guide Admin</p>
       </div>
 
+      {/* Logout Button */}
+      <button
+        onClick={() => {
+          setIsAdmin(false);
+          localStorage.clear();
+          sessionStorage.clear();
+        }}
+        className="px-3 py-2 rounded-xl text-red-500 bg-red-50 text-sm font-bold"
+      >
+        {language === 'ar' ? 'تسجيل خروج' : 'Logout'}
+      </button>
+
+    </div>
+
+  </div>
       {/* Tabs */}
       <div className={`flex gap-1 mx-4 p-1 rounded-2xl mb-4 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
         {[
