@@ -1,12 +1,21 @@
+
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '../store/useStore';
 import { churches, typeConfig } from '../data/churchesData';
 
-const ADMIN_PASSWORD = 'T01288452212';
+import { useEffect } from 'react';
+const ADMIN_PASSWORD = 'TOMAS2005@';
 
-export default function AdminPage() {
+export default function AdminPage() { 
   const { isDarkMode, isAdmin, setIsAdmin } = useStore();
+  
+  useEffect(() => {
+    setIsAdmin(false);
+  }, []);
+
+  return (
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState<'dashboard' | 'churches' | 'add'>('dashboard');
