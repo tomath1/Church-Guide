@@ -5,23 +5,19 @@ import { churches, typeConfig } from '../data/churchesData';
 import { useEffect } from 'react';
 const ADMIN_PASSWORD = 'TOMAS2005@';
 
-export default function AdminPage() { 
+export default function AdminPage() {
   const { isDarkMode, isAdmin, setIsAdmin } = useStore();
 
-  useEffect(() => {
-  setIsAdmin(false);
-  localStorage.clear();
-  sessionStorage.clear();
-}, []);
-
-  return (
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
   const [activeTab, setActiveTab] = useState<'dashboard' | 'churches' | 'add'>('dashboard');
+
   const [formData, setFormData] = useState({
     name: '', nameEn: '', type: 'orthodox', governorate: '', city: '', address: '',
     lat: '', lng: '', phone: '', description: '', patron: '', founded: '',
   });
+
   const [addSuccess, setAddSuccess] = useState(false);
 
   const stats = {
@@ -38,23 +34,19 @@ export default function AdminPage() {
     totalReviews: churches.reduce((s, c) => s + c.reviewCount, 0).toLocaleString(),
   };
 
-  const handleLogin = () => {
-    if (password === ADMIN_PASSWORD) {
-      setIsAdmin(true);
-      setError('');
-    } else {
-      setError('كلمة المرور غير صحيحة');
-    }
-  };
+  useEffect(() => {
+    setIsAdmin(false);
+    localStorage.clear();
+    sessionStorage.clear();
+  }, []);
 
-  const handleAddChurch = (e: React.FormEvent) => {
-    e.preventDefault();
-    setAddSuccess(true);
-    setTimeout(() => setAddSuccess(false), 3000);
-    setFormData({ name: '', nameEn: '', type: 'orthodox', governorate: '', city: '', address: '', lat: '', lng: '', phone: '', description: '', patron: '', founded: '' });
-  };
+  const handleLogin = () => {};
 
-  if (!isAdmin) {
+  const handleAddChurch = () => {};
+
+  // 👇 شرط كامل + return جواه
+if (!isAdmin) 
+  
     return (
       <div className={`min-h-screen flex items-center justify-center px-4 pt-16 pb-24 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'}`}>
         <motion.div
@@ -133,7 +125,8 @@ export default function AdminPage() {
         }}
         className="px-3 py-2 rounded-xl text-red-500 bg-red-50 text-sm font-bold"
       >
-        {language === 'ar' ? 'تسجيل خروج' : 'Logout'}
+        {language === 'ar' ? '' : 'Logout'}
+      
       </button>
 
     </div>
