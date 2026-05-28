@@ -10,10 +10,10 @@ const ADMIN_PASSWORD = 'TOMAS2005@';
 
 export default function AdminPage() { 
   const { isDarkMode, isAdmin, setIsAdmin } = useStore();
-  
   useEffect(() => {
-    setIsAdmin(false);
-  }, []);
+  localStorage.removeItem('isAdmin');
+  setIsAdmin(false);
+}, []);
 
   return (
   const [password, setPassword] = useState('');
